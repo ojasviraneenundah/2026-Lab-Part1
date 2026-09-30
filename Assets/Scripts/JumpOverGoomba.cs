@@ -42,7 +42,7 @@ public class JumpOverGoomba : MonoBehaviour
         // when jumping, and Goomba is near Mario and we haven't registered our score
         if (!onGroundState && countScoreState)
         {
-            if (Mathf.Abs(transform.position.x - enemyLocation.position.x) < 0.5f)
+            if (Mathf.Abs(transform.position.x - enemyLocation.position.x) < 0.1f)
             {
                 countScoreState = false;
                 score++;
