@@ -179,6 +179,8 @@ public class PlayerMovement : MonoBehaviour
 
     // for question boxes
     public QuestionBox[] questionBoxes;
+    public Coin_spawn[] coin_Spawns;
+    public Bouncebox[] bricks;
 
     // need to fix mario and goomba physics after restart button pressed
     private void ResetGame()
@@ -209,6 +211,16 @@ public class PlayerMovement : MonoBehaviour
         foreach (QuestionBox box in questionBoxes)
         {
             box.ResetBox();
+        }
+
+        foreach (Coin_spawn brickcoin in coin_Spawns)
+        {
+            brickcoin.ResetBrickCoins();
+        }
+
+        foreach (Bouncebox brick in bricks)
+        {
+            brick.resetBrick();
         }
     }
 

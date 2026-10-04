@@ -5,6 +5,7 @@ public class Coin_spawn : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Vector2 startPosition;
+    public Animator coinAnimator;
     public AudioSource coinAudio;
 
 
@@ -13,6 +14,9 @@ public class Coin_spawn : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         startPosition = rb.position;
+
+        coinAnimator = GetComponent<Animator>();
+
         StartCoroutine(Bounce());
     }
 
@@ -24,6 +28,7 @@ public class Coin_spawn : MonoBehaviour
 
     IEnumerator Bounce()
     {
+        coinAnimator.SetTrigger("hit");
         Vector2 topPosition = startPosition + Vector2.up * 0.5f;
 
         // Move up
@@ -48,6 +53,13 @@ public class Coin_spawn : MonoBehaviour
 
         rb.position = startPosition;
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+    }
+
+    public void ResetBrickCoins()
+    {
+        gameObject.SetActive(true);
+        rb.position = startPosition;
+        coinAnimator.ResetTrigger("hit"); 
     }
 }

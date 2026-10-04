@@ -29,13 +29,10 @@ public class QuestionBox : MonoBehaviour
         // question box stays completely fixed
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-        // Coin setup (optional)
-        if (coin != null)
-        {
-            coinAnimator = coin.GetComponent<Animator>();
-            coinStartPosition = coin.transform.position;
-        }
-
+        // Coin setup 
+        coinAnimator = coin.GetComponent<Animator>();
+        coinStartPosition = coin.transform.position;
+        
         boxAnimator = GetComponent<Animator>();
     }
 
@@ -63,7 +60,7 @@ public class QuestionBox : MonoBehaviour
         }
     }
 
-    // function for bounce for the question box
+    // function for bounce/ oscillation for the question box
     IEnumerator Bounce()
     {
         bouncing = true;
@@ -85,12 +82,9 @@ public class QuestionBox : MonoBehaviour
         }
 
         // Trigger coin as box reaches the top; only spawn coin if this box has one
-        if (coin != null)
-        {
-            StartCoroutine(CoinPop());
-        }
- 
+        StartCoroutine(CoinPop());
 
+ 
         // Move box back down
         while (Vector2.Distance(rb.position, startPosition) > 0.01f)
         {
@@ -115,11 +109,7 @@ public class QuestionBox : MonoBehaviour
     IEnumerator CoinPop()
     {
         // Start coin rotation animation
-        // Reset coin only if this box has one
-if (coin != null)
-{
-    coinAnimator.ResetTrigger("hit");
-}
+        coinAnimator.SetTrigger("hit");
 
         Vector2 coinTopPosition =
             coinStartPosition + Vector2.up * 0.5f;
@@ -155,10 +145,8 @@ if (coin != null)
         }
 
         // Reset coin only if this box has one
-if (coin != null)
-{
-    coin.transform.position = coinStartPosition;
-}
+        coin.transform.position = coinStartPosition;
+
     }
 
     // reset when restart button is pressed
@@ -168,21 +156,13 @@ if (coin != null)
     bouncing = false;
 
     // Reset box animation
-    if (boxAnimator != null)
-    {
+
         boxAnimator.ResetTrigger("used");
         boxAnimator.Play("question_box");
-    }
 
-    // Reset coin ONLY if this box has a coin
-    if (coin != null)
-    {
-        if (coinAnimator != null)
-        {
-            coinAnimator.ResetTrigger("hit");
-        }
+        coinAnimator.ResetTrigger("hit");
 
         coin.transform.position = coinStartPosition;
-    }
+   
 }
 }

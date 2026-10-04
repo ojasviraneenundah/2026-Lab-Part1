@@ -616,6 +616,17 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &336187710 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114681873584365151, guid: 117bf885cac714988a1b372da7daa782, type: 3}
+  m_PrefabInstance: {fileID: 1019595696}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b1b8cf26b304de199585a6829d26d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionBox
 --- !u!4 &355087866 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1992731565767344444, guid: 117bf885cac714988a1b372da7daa782, type: 3}
@@ -1603,6 +1614,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4066118832332747591, guid: 51c8338c9701645c08c305b8d06d8ccf, type: 3}
   m_PrefabInstance: {fileID: 1729988894}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &998857823 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2651818922562593137, guid: 8b00569faba334d42a724785182fe2f4, type: 3}
+  m_PrefabInstance: {fileID: 1424009542}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f4487046abe4124922300faac5583f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
 --- !u!1001 &1019595696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1658,10 +1680,6 @@ PrefabInstance:
     - target: {fileID: 1992731565767344444, guid: 117bf885cac714988a1b372da7daa782, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8103188593172069508, guid: 117bf885cac714988a1b372da7daa782, type: 3}
-      propertyPath: m_Name
-      value: question-box-1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1774,6 +1792,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 456393073}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1065172443 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2651818922562593137, guid: 8b00569faba334d42a724785182fe2f4, type: 3}
+  m_PrefabInstance: {fileID: 443721563}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f4487046abe4124922300faac5583f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
 --- !u!4 &1111845236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4066118832332747591, guid: 51c8338c9701645c08c305b8d06d8ccf, type: 3}
@@ -2308,10 +2337,15 @@ MonoBehaviour:
   jumpOverGoomba: {fileID: 1260794814}
   gameCamera: {fileID: 519420032}
   questionBoxes:
-  - {fileID: 0}
+  - {fileID: 336187710}
   - {fileID: 889572360}
   - {fileID: 1261966815}
   - {fileID: 1424049592}
+  coin_Spawns: []
+  bricks:
+  - {fileID: 1065172443}
+  - {fileID: 1734563093}
+  - {fileID: 998857823}
   marioAudio: {fileID: 1260794816}
 --- !u!50 &1260794812
 Rigidbody2D:
@@ -3440,6 +3474,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51c8338c9701645c08c305b8d06d8ccf, type: 3}
+--- !u!114 &1734563093 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2651818922562593137, guid: 8b00569faba334d42a724785182fe2f4, type: 3}
+  m_PrefabInstance: {fileID: 757828940}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f4487046abe4124922300faac5583f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
 --- !u!1 &1777019835
 GameObject:
   m_ObjectHideFlags: 0

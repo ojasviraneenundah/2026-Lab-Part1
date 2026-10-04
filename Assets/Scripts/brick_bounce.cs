@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class Bouncebox : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class Bouncebox : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         startPosition = rb.position;
 
-        // question box stays completely fixed
+        // brick box stays completely fixed
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
@@ -35,7 +36,7 @@ public class Bouncebox : MonoBehaviour
         }
     }
 
-    // function for bounce for the question box
+    // function for bounce for the brick box
     IEnumerator Bounce()
     {
         bouncing = true;
@@ -65,4 +66,11 @@ public class Bouncebox : MonoBehaviour
         rb.position = startPosition;
         bouncing = false;
     }
+
+    public void resetBrick()
+    {
+        coin = true;
+    }
+
+    
 }
