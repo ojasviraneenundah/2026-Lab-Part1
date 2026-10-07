@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8138128105322125744}
   - component: {fileID: 6690118205457513305}
   - component: {fileID: 1597375819541449524}
-  - component: {fileID: 2651818922562593137}
+  - component: {fileID: 1603061203613533854}
   m_Layer: 6
   m_Name: coinbrick
   m_TagString: Obstacles
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156547184070215826}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.671, y: -0.351, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -167,7 +167,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!114 &2651818922562593137
+--- !u!114 &1603061203613533854
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,5 +178,5 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6f4487046abe4124922300faac5583f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
-  item: {fileID: 3680173396794952278, guid: 0756b01f51f9249e9801ee6bd4c22965, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::Bouncebox
+  item: {fileID: 0}

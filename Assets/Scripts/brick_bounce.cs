@@ -10,8 +10,14 @@ public class Bouncebox : MonoBehaviour
     private bool bouncing = false;
     private bool coin = true;
 
+    public AudioSource bounceAudio;
+
+    GameManager gameManager;
+
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+
         rb = GetComponent<Rigidbody2D>();
         startPosition = rb.position;
 
@@ -29,9 +35,17 @@ public class Bouncebox : MonoBehaviour
                 if (item != null && coin){
                     Instantiate(item, transform. position, Quaternion.identity);
                     coin = false;
+                    gameManager.IncreaseScore(1);                
                 }
                 StartCoroutine(Bounce());
                 break;
+                   
+                // if (coin == false){
+                //     bounceAudio.PlayOneShot(bounceAudio.clip);
+                //     StartCoroutine(Bounce());
+                    
+                // }
+
             }
         }
     }

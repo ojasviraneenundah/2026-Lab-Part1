@@ -181,6 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   startPosition: {x: 0, y: 0, z: 0}
+  goombaAnimator: {fileID: 2318661117015347886}
 --- !u!95 &2318661117015347886
 Animator:
   serializedVersion: 7

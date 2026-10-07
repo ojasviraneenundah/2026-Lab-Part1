@@ -35,29 +35,32 @@ public class PlayerMovement : MonoBehaviour
         marioAnimator.SetBool("onGround", onGroundState);
     }
 
-    // Update is called once per frame
+    // refactored - Update is called once per frame
     void Update()
+    {      
+        // set xSpeed parameter with current velocity of rigidbody2d mario
+        marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.linearVelocity.x));
+    }
+
+    // refactored 
+    void FlipMarioSprite(int value)
     {
-        // toggle state
-        if (Input.GetKeyDown("a") && faceRightState)
+        if (value == -1 && faceRightState)
         {
             faceRightState = false;
             marioSprite.flipX = true;
-            // for skid animation
-            if (marioBody.linearVelocity.x > 0.1f)
+            if (marioBody.linearVelocity.x > 0.05f)
                 marioAnimator.SetTrigger("onSkid");
+
         }
 
-        if (Input.GetKeyDown("d") && !faceRightState)
+        else if (value == 1 && !faceRightState)
         {
             faceRightState = true;
             marioSprite.flipX = false;
-            if (marioBody.linearVelocity.x < -0.1f)
+            if (marioBody.linearVelocity.x < -0.05f)
                 marioAnimator.SetTrigger("onSkid");
         }
-
-        // set xSpeed parameter with current velocity of rigidbody2d mario
-        marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.linearVelocity.x));
     }
 
 
@@ -75,46 +78,71 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // just mario moving left and right without sliding and others
+    private bool moving = false;
+    // refactored - just mario moving left and right without sliding and others
     void FixedUpdate()
     {
-        if (alive)
+        if (alive && moving)
         {
-
-            float moveHorizontal = Input.GetAxisRaw("Horizontal");
-
-            if (Mathf.Abs(moveHorizontal) > 0)
-            {
-                Vector2 movement = new Vector2(moveHorizontal, 0);
-                // verify that it doesnt go above maxSpeed
-                if (marioBody.linearVelocity.magnitude < maxSpeed)
-                {
-                    marioBody.AddForce(movement * speed);
-                }
-            }
-
-            // stop
-            if (Input.GetKeyUp("a") || Input.GetKeyUp("d"))
-            {
-                // shtop
-                marioBody.linearVelocity = Vector2.zero;
-            }
-
-            if (Input.GetKeyDown("space") && onGroundState)
-            {
-                marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
-                onGroundState = false;
-                // update animator state
-                marioAnimator.SetBool("onGround", onGroundState);
-            }
-
+            Move(faceRightState == true ? 1 : -1);
         }
 
     }
 
+    void Move(int value)
+    {
+
+        Vector2 movement = new Vector2(value, 0);
+        // check if it doesn't go beyond maxSpeed
+        if (marioBody.linearVelocity.magnitude < maxSpeed)
+            marioBody.AddForce(movement * speed);
+    }
+
+    public void MoveCheck(int value)
+    {
+        if (value == 0)
+        {
+            moving = false;
+        }
+        else
+        {
+            FlipMarioSprite(value);
+            moving = true;
+            Move(value);
+        }
+    }
+
+    private bool jumpedState = false;
+
+    public void Jump()
+    {
+        if (alive && onGroundState)
+        {
+            // jump
+            marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
+            onGroundState = false;
+            jumpedState = true;
+            // update animator state
+            marioAnimator.SetBool("onGround", onGroundState);
+
+        }
+    }
+
+    public void JumpHold()
+    {
+        if (alive && jumpedState)
+        {
+            // jump higher
+            marioBody.AddForce(Vector2.up * upSpeed * 30, ForceMode2D.Force);
+            jumpedState = false;
+
+        }
+    }
+
+
     // for mario death
     public AudioClip marioDeath;
-    public float deathImpulse = 5;
+    public float deathImpulse = 2;
 
     // state
     [System.NonSerialized]
@@ -125,19 +153,33 @@ public class PlayerMovement : MonoBehaviour
         marioBody.AddForce(Vector2.up * deathImpulse, ForceMode2D.Impulse);
     }
 
+    
     // calls game over in game manager when mario collides with goomba
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy") && alive)
         {
-            Debug.Log("Collided with goomba!");
+            EnemyMovement enemy = other.GetComponent<EnemyMovement>(); // for callback function from stomp()
 
-            // gameManager.GameOver();
+            if (marioBody.linearVelocity.y < 0)
+        {
+            Debug.Log("STOMP!");
+            enemy.Stomp();
+
+            marioBody.linearVelocity = new Vector2(
+                marioBody.linearVelocity.x,
+                upSpeed
+            );
+            
+        }
+        else{
+            Debug.Log("Collided with goomba!");
 
             // play death animation
             marioAnimator.Play("mario-die");
-            marioAudio.PlayOneShot(marioDeath);
+            marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
             alive = false;
+            }
         }
     }
 
@@ -162,13 +204,13 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("Restart!");
         // reset everything
-        ResetGame();
+        GameRestart();
         // resume time
         Time.timeScale = 1.0f;
 
-        gameManager.gameOverPanel.SetActive(false);
-        gameManager.scoreText.SetActive(true);
-        gameManager.restartButton.SetActive(true);
+        // gameManager.gameOverPanel.SetActive(false);
+        // gameManager.scoreText.SetActive(true);
+        // gameManager.restartButton.SetActive(true);
     }
 
     // reset score
@@ -183,7 +225,7 @@ public class PlayerMovement : MonoBehaviour
     public Bouncebox[] bricks;
 
     // need to fix mario and goomba physics after restart button pressed
-    private void ResetGame()
+        public void GameRestart()
     {
         // reset position
         marioBody.transform.position = new Vector3(-0.86f, 0.28f, 0.0f);
@@ -193,10 +235,10 @@ public class PlayerMovement : MonoBehaviour
         // reset score
         scoreText.text = "Score: 0";
         // reset Goomba positions
-        foreach (Transform eachChild in enemies.transform)
-        {
-            eachChild.transform.position = eachChild.GetComponent<EnemyMovement>().startPosition;
-        }
+        // foreach (Transform eachChild in enemies.transform)
+        // {
+        //     eachChild.transform.position = eachChild.GetComponent<EnemyMovement>().startPosition;
+        // }
 
         // reset score
         jumpOverGoomba.score = 0;
@@ -225,16 +267,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-
     // for audio
     public AudioSource marioAudio;
+    public AudioSource marioDeathAudio;
 
     void PlayJumpSound()
     {
         // play jump sound
         marioAudio.PlayOneShot(marioAudio.clip);
     }
-
-
 
 }
