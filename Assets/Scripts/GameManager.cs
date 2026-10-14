@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GameManager : MonoBehaviour
+using UnityEngine.SceneManagement;
+
+public class GameManager : Singleton<GameManager>
 {
     // public GameObject gameOverPanel;
     // public GameObject scoreText;
@@ -17,6 +19,7 @@ public class GameManager : MonoBehaviour
     //     restartButton.SetActive(false);
     // }
 
+    public IntVariable gameScore;
     
     // events
     public UnityEvent gameStart;
@@ -33,6 +36,9 @@ public class GameManager : MonoBehaviour
     {
         gameStart.Invoke();
         Time.timeScale = 1.0f;
+
+        // subscribe to scene manager scene change
+        SceneManager.activeSceneChanged += SceneSetup;
         
         // subscribed to event and added a callback function
         foreach (EnemyMovement enemy in this.enemy)
@@ -41,6 +47,12 @@ public class GameManager : MonoBehaviour
             //enemy.goombaAnimator = enemy.GetComponent<Animator>();
         }
         
+    }
+
+    public void SceneSetup(Scene current, Scene next)
+    {
+        gameStart.Invoke();
+        SetScore(score);
     }
 
     // Update is called once per frame
@@ -52,21 +64,34 @@ public class GameManager : MonoBehaviour
     public void GameRestart()
     {
         // reset score
-        score = 0;
-        SetScore(score);
+        // score = 0;
+        // SetScore(score);
+
+        // reset score
+        gameScore.Value = 0;
         gameRestart.Invoke();
         Time.timeScale = 1.0f;
     }
 
     public void IncreaseScore(int increment)
     {
-        score += increment;
-        SetScore(score);
+        // score += increment;
+        // SetScore(score);
+
+        // increase score by 1
+        // gameScore.ApplyChange(1);
+
+        // better use like this
+        gameScore.ApplyChange(increment);
+        SetScore(gameScore.Value);
     }
 
     public void SetScore(int score)
     {
-        scoreChange.Invoke(score);
+        // scoreChange.Invoke(score);
+
+        // invoke score change event with current score to update HUD
+        scoreChange.Invoke(gameScore.Value);
     }
 
 

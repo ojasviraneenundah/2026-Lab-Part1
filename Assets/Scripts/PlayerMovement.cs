@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro; // for text mesh pro UGI
 
+using UnityEngine.SceneManagement;
+
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 10;
+    // public float speed = 10;
     private Rigidbody2D marioBody;
 
     private SpriteRenderer marioSprite;
     private bool faceRightState = true;
 
     // for left and right movement
-    public float maxSpeed = 15;
+    // public float maxSpeed = 15;
 
     // to jump
-    public float upSpeed = 7;
+    // public float upSpeed = 7;
 
     // ground state (yeah)
     private bool onGroundState = true;
@@ -23,9 +25,22 @@ public class PlayerMovement : MonoBehaviour
     // for animation
     public Animator marioAnimator;
 
+    // scriptable object for game constants
+    public GameConstants gameConstants;
+    float deathImpulse;
+    float upSpeed;
+    float maxSpeed;
+    float speed;
+
     // Start is called before the first frame update
     void Start()
     {
+        // Set constants for SO
+        speed = gameConstants.speed;
+        maxSpeed = gameConstants.maxSpeed;
+        deathImpulse = gameConstants.deathImpulse;
+        upSpeed = gameConstants.upSpeed;
+
         marioSprite = GetComponent<SpriteRenderer>();
 
         Application.targetFrameRate = 30;
@@ -33,7 +48,41 @@ public class PlayerMovement : MonoBehaviour
 
         // update animator state
         marioAnimator.SetBool("onGround", onGroundState);
+
+        //SceneManager.activeSceneChanged += SetStartingPosition;
     }
+
+    // fix for mario being destroyed when next scene unfolds
+    // void OnEnable()
+    // {
+    //     SceneManager.activeSceneChanged += SetStartingPosition;
+    // }
+
+    // void OnDisable()
+    // {
+    //     SceneManager.activeSceneChanged -= SetStartingPosition;
+    // }
+
+    // setting mario's starting position when changing scenes
+    public void SetStartingPosition(Scene current, Scene next)
+    {
+        if (next.name == "World-1-2")
+        {
+            // change the position accordingly in your World-1-2 case
+            this.transform.position = new Vector3(-0.86f, 0.28f, 0.0f);
+        }
+    }
+
+
+    void Awake(){
+        // other instructions
+        
+        // hmm
+        gameManager = GameManager.instance;
+        // subscribe to Game Restart event
+        GameManager.instance.gameRestart.AddListener(GameRestart);
+    }
+
 
     // refactored - Update is called once per frame
     void Update()
@@ -142,7 +191,7 @@ public class PlayerMovement : MonoBehaviour
 
     // for mario death
     public AudioClip marioDeath;
-    public float deathImpulse = 2;
+    // public float deathImpulse = 2;
 
     // state
     [System.NonSerialized]

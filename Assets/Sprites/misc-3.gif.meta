@@ -681,7 +681,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -690,6 +690,160 @@ TextureImporter:
       bones: []
       spriteID: a55189a2fc47d4d8b90a2bcbb3a3f776
       internalID: -1684461311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: castle-1
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 954
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70da801061102410190cf873b1853a7a
+      internalID: 1612967171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: castle-right
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 954
+        width: 40
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50ab4f117a0274de2aee2bca0d94943b
+      internalID: -1944712244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: castle-left
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 954
+        width: 40
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9e3260d6b4a84659b45242803d74d6b
+      internalID: 441082117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: flag-post
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 1038
+        width: 24
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffb4f40fa37b24eb3bf484e80311e8f9
+      internalID: 797184510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipe_face_left
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 1118
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a34e3a77164b440089afe5e3b30a4a4
+      internalID: -1937960238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: connection_pipe
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 1117
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdd761a40ee9147e2bf949af58ccea90
+      internalID: -1296609436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cursor pro max
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 239
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feadbe4a25261443cae24f1a2257de23
+      internalID: 357840511
       vertices: []
       indices: 
       edges: []
@@ -719,17 +873,24 @@ TextureImporter:
       Pipe head: -886149785
       Small Hill: -1013026480
       brick: -645301184
+      castle-1: 1612967171
+      castle-left: 441082117
+      castle-right: -1944712244
       coin: -687959724
       coin_1: -437140456
       coin_2: 93606697
       coin_3: -236513624
       coin_4: 1588333637
+      connection_pipe: -1296609436
+      cursor pro max: 357840511
+      flag-post: 797184510
       goomba-dead: 1174278531
       goomba-leftfoot: -1198422144
       goomba-rightfoot: -929730252
       magic mushroom: 814877448
       moving_platform_6: -236159495
       pipe body: 141433839
+      pipe_face_left: -1937960238
       question block: 2137439766
       question_box_anim2: -96607692
       question_box_anim3: -1161497053

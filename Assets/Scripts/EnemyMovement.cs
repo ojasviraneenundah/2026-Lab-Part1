@@ -24,6 +24,11 @@ public class EnemyMovement : MonoBehaviour
     public Animator goombaAnimator;
     public AudioSource goombaAudioSource;
 
+    void Awake()
+    {
+        GameManager.instance.gameRestart.AddListener(GameRestart);
+    }
+
     void Start()
     {
         enemyBody = GetComponent<Rigidbody2D>();

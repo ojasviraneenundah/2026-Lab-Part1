@@ -15,6 +15,9 @@ public class CameraController : MonoBehaviour
 
     void  Start()
     {
+        // for new scenes
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+
         // get coordinate of the bottomleft of the viewport
         // z doesn't matter since the camera is orthographic
         Vector3 bottomLeft =  Camera.main.ViewportToWorldPoint(new  Vector3(0, 0, 0)); // the z-component is the distance of the resulting plane from the camera 
@@ -22,6 +25,7 @@ public class CameraController : MonoBehaviour
         offset  =  this.transform.position.x  -  player.position.x;
         startX  =  this.transform.position.x;
         endX  =  endLimit.transform.position.x  -  viewportHalfWidth;
+
     }
 
     void  Update()
