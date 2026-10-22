@@ -65,6 +65,18 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    void OnEnable()
+{
+    if (GameManager.instance != null)
+        GameManager.instance.RegisterEnemy(this);
+}
+
+void OnDisable()
+{
+    if (GameManager.instance != null)
+        GameManager.instance.UnregisterEnemy(this);
+}
+
 
     public void Stomp()
     {

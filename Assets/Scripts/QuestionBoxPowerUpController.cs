@@ -32,6 +32,7 @@ public class QuestionBoxPowerupController : MonoBehaviour, IPowerupController
             // show disabled sprite
             this.GetComponent<Animator>().SetTrigger("used");
             // spawn the powerup
+            powerup.ShowPowerup();
             powerupAnimator.SetTrigger("spawned");
         }
     }

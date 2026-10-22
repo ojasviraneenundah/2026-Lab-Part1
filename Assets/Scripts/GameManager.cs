@@ -41,13 +41,25 @@ public class GameManager : Singleton<GameManager>
         SceneManager.activeSceneChanged += SceneSetup;
         
         // subscribed to event and added a callback function
-        foreach (EnemyMovement enemy in this.enemy)
-        {
-            enemy.onGoombaStomped += theActualGoombaStomped;
-            //enemy.goombaAnimator = enemy.GetComponent<Animator>();
-        }
+        // foreach (EnemyMovement enemy in this.enemy)
+        // {
+
+        //     enemy.onGoombaStomped += theActualGoombaStomped;
+        //     //enemy.goombaAnimator = enemy.GetComponent<Animator>();
+        // }
         
     }
+
+    public void RegisterEnemy(EnemyMovement e)
+{
+    e.onGoombaStomped -= theActualGoombaStomped; // avoid double-subscribing
+    e.onGoombaStomped += theActualGoombaStomped;
+}
+
+public void UnregisterEnemy(EnemyMovement e)
+{
+    e.onGoombaStomped -= theActualGoombaStomped;
+}
 
     public void SceneSetup(Scene current, Scene next)
     {
@@ -104,6 +116,7 @@ public class GameManager : Singleton<GameManager>
     // the callback function 
     void theActualGoombaStomped()
     {
+        Debug.Log("Goomba stomped callback, score now: " + gameScore.Value);
         IncreaseScore(1);
     }
 

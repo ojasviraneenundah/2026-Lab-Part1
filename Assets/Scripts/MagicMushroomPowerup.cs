@@ -7,6 +7,9 @@ public class MagicMushroomPowerup : BasePowerup
 {
 
     private Vector3 originalPosition;
+
+    public SpriteRenderer spriteRenderer;
+
     // setup this object's type
     // instantiate variables
     protected override void Start()
@@ -15,6 +18,8 @@ public class MagicMushroomPowerup : BasePowerup
         this.type = PowerupType.MagicMushroom;
         GameManager.instance.gameRestart.AddListener(GameRestart);
         originalPosition = transform.localPosition;
+
+        spriteRenderer.enabled = false;
     }
 
     // void Awake()
@@ -51,12 +56,18 @@ public class MagicMushroomPowerup : BasePowerup
     // interface implementation
     public override void SpawnPowerup()
     {
+        // spriteRenderer.enabled = true;
         spawned = true;
         magicMushroomAudio.PlayOneShot(magicMushroomAudio.clip);
         rigidBody.bodyType = RigidbodyType2D.Dynamic;
         rigidBody.gravityScale = 0.2f;
         rigidBody.AddForce(Vector2.right * 0.05f, ForceMode2D.Impulse); // move to the right
     }
+
+    public override void ShowPowerup()
+{
+    spriteRenderer.enabled = true;
+}
 
     void Update()
 {
@@ -88,6 +99,8 @@ public class MagicMushroomPowerup : BasePowerup
     public void GameRestart()
     {
         this.gameObject.SetActive(true);
+
+        spriteRenderer.enabled = false;
         spawned = false;
         rigidBody.bodyType = RigidbodyType2D.Kinematic;
         rigidBody.gravityScale = 0f;
