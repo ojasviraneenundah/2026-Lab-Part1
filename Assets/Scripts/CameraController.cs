@@ -12,11 +12,14 @@ public class CameraController : MonoBehaviour
     private float endX; // largest x-coordinate of the camera
     private float viewportHalfWidth;
 
+    public Vector3 startPosition;
+
 
     void  Start()
     {
         // for new scenes
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        startPosition = transform.position;
 
         // get coordinate of the bottomleft of the viewport
         // z doesn't matter since the camera is orthographic
@@ -34,6 +37,13 @@ public class CameraController : MonoBehaviour
         // check if desiredX is within startX and endX
         if (desiredX  >  startX  &&  desiredX  <  endX)
         this.transform.position  =  new  Vector3(desiredX, this.transform.position.y, this.transform.position.z);
+    }
+
+    public void GameRestart()
+    {
+        // reset camera position
+        transform.position = startPosition;
+        Debug.Log("this worked :D");
     }
 
 }
