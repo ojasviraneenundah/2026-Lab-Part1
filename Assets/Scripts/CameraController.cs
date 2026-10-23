@@ -43,7 +43,7 @@ public class CameraController : MonoBehaviour
     {
         // reset camera position
         transform.position = startPosition;
-        Debug.Log("this worked :D");
+        // Debug.Log("this worked :D");
     }
 
 }

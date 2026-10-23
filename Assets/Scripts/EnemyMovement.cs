@@ -26,7 +26,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Awake()
     {
-        GameManager.instance.gameRestart.AddListener(GameRestart);
+        // GameManager.instance.gameRestart.AddListener(GameRestart); // lab5, actually this not even SO this should be called by EnemyManager
     }
 
     void Start()

@@ -78,10 +78,11 @@ public void UnregisterEnemy(EnemyMovement e)
         // reset score
         // score = 0;
         // SetScore(score);
+        Debug.Log("GameManager.GameRestart() called");
 
         // reset score
-        gameScore.Value = 0;
-        gameRestart.Invoke();
+        gameScore.Value = 0; // probably need to take this out later also 
+        // gameRestart.Invoke();// taking this out and letting the restart button raise instead, lab5
         Time.timeScale = 1.0f;
     }
 

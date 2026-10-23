@@ -78,9 +78,9 @@ public class PlayerMovement : MonoBehaviour
         // other instructions
         
         // hmm
-        gameManager = GameManager.instance;
-        // subscribe to Game Restart event
-        GameManager.instance.gameRestart.AddListener(GameRestart);
+        // gameManager = GameManager.instance;
+        // // subscribe to Game Restart event
+        // GameManager.instance.gameRestart.AddListener(GameRestart); // taking this out and adding SO listener in inspector
     }
 
 
@@ -263,7 +263,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // reset score
-    public JumpOverGoomba jumpOverGoomba;
+    // public JumpOverGoomba jumpOverGoomba;
 
     // reset camera to mario position
     public Transform gameCamera;
@@ -274,8 +274,9 @@ public class PlayerMovement : MonoBehaviour
     public Bouncebox[] bricks;
 
     // need to fix mario and goomba physics after restart button pressed
-        public void GameRestart()
+    public void GameRestart()
     {
+        Debug.Log("playermovement.GameRestart() called");
         // reset position
         marioBody.transform.position = new Vector3(-0.86f, 0.28f, 0.0f);
         // reset sprite direction
@@ -290,29 +291,29 @@ public class PlayerMovement : MonoBehaviour
         // }
 
         // reset score
-        jumpOverGoomba.score = 0;
+        // jumpOverGoomba.score = 0;
 
         // reset animation
         marioAnimator.SetTrigger("gameRestart");
         alive = true;
 
-        // reset camera position
-        gameCamera.position = new Vector3(0, 1, -10);
+        // reset camera position, took this out cuz i trying to gameRestart camera from camera controller
+        // gameCamera.position = new Vector3(0, 1, -10);
 
-        foreach (QuestionBox box in questionBoxes)
-        {
-            box.ResetBox();
-        }
+        // foreach (QuestionBox box in questionBoxes)
+        // {
+        //     box.ResetBox();
+        // }
 
-        foreach (Coin_spawn brickcoin in coin_Spawns)
-        {
-            brickcoin.ResetBrickCoins();
-        }
+        // foreach (Coin_spawn brickcoin in coin_Spawns)
+        // {
+        //     brickcoin.ResetBrickCoins();
+        // }
 
-        foreach (Bouncebox brick in bricks)
-        {
-            brick.resetBrick();
-        }
+        // foreach (Bouncebox brick in bricks)
+        // {
+        //     brick.resetBrick();
+        // }
     }
 
 

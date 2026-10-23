@@ -43,13 +43,14 @@ public class HUDManager : MonoBehaviour
         // subscribe to events
         GameManager.instance.gameStart.AddListener(GameStart);
         GameManager.instance.gameOver.AddListener(GameOver);
-        GameManager.instance.gameRestart.AddListener(GameStart);
+        // GameManager.instance.gameRestart.AddListener(GameStart); // idk why your restart uses start but okay, we work with this i guess
         GameManager.instance.scoreChange.AddListener(SetScore);
 
     }
 
     public void GameStart()
     {
+        Debug.Log("HUDManager.GameStart() called");
         // hide gameover panel
         gameOverPanel.SetActive(false);
         pauseButton.SetActive(true);
