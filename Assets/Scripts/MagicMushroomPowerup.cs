@@ -93,7 +93,7 @@ public class MagicMushroomPowerup : BasePowerup
     }
 
     void OnDestroy()
-{
+{   
     Debug.Log("MUSHROOM DESTROYED!");
 }
 

@@ -41,7 +41,7 @@ public class HUDManager : MonoBehaviour
     {
         // other instructions
         // subscribe to events
-        GameManager.instance.gameStart.AddListener(GameStart); // who is raising this????
+        // GameManager.instance.gameStart.AddListener(GameStart); // who is raising this????
         // GameManager.instance.gameOver.AddListener(GameOver);
         // GameManager.instance.gameRestart.AddListener(GameStart); // idk why your restart uses start but okay, we work with this i guess
         // GameManager.instance.scoreChange.AddListener(SetScore); 

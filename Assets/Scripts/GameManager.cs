@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 using UnityEngine.SceneManagement;
 
-public class GameManager : Singleton<GameManager>
+public class GameManager : MonoBehaviour // Singleton<GameManager>
 {
     // public GameObject gameOverPanel;
     // public GameObject scoreText;
