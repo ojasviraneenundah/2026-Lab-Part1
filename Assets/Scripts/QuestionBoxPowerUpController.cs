@@ -62,7 +62,6 @@ public class QuestionBoxPowerupController : MonoBehaviour, IPowerupController
     transform.localPosition = originalPosition;
 
     GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-
 }
 
 }

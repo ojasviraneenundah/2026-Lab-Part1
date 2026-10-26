@@ -247,12 +247,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // when restart button is clicked
-    public TextMeshProUGUI scoreText;
-    public GameObject enemies;
+    // public TextMeshProUGUI scoreText;
+    // public GameObject enemies;
     // other methods
 
     // for game manager
-    public GameManager gameManager;
+    // public GameManager gameManager;
 
     public void RestartButtonCallback(int input)
     {
@@ -271,7 +271,7 @@ public class PlayerMovement : MonoBehaviour
     // public JumpOverGoomba jumpOverGoomba;
 
     // reset camera to mario position
-    public Transform gameCamera;
+    // public Transform gameCamera;
 
     // for question boxes
     // public QuestionBox[] questionBoxes;
@@ -288,7 +288,7 @@ public class PlayerMovement : MonoBehaviour
         faceRightState = true;
         marioSprite.flipX = false;
         // reset score
-        scoreText.text = "Score: 0";
+        // scoreText.text = "Score: 0";
         // reset Goomba positions
         // foreach (Transform eachChild in enemies.transform)
         // {

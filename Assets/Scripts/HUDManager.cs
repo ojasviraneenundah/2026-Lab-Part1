@@ -55,6 +55,7 @@ public class HUDManager : MonoBehaviour
         gameOverPanel.SetActive(false);
         pauseButton.SetActive(true);
         scoreText.transform.localPosition = scoreTextPosition[0];
+        scoreText.GetComponent<TextMeshProUGUI>().text = "Score: 0";
         restartButton.localPosition = restartButtonPosition[0];
     }
 
