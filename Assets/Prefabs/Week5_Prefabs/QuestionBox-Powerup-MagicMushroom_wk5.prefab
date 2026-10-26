@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4505598807210439290}
   - component: {fileID: 5434394991195249944}
   - component: {fileID: 4106510271574948230}
+  - component: {fileID: 613720252792552529}
+  - component: {fileID: 6435684531300164956}
   m_Layer: 6
   m_Name: Powerup
   m_TagString: Untagged
@@ -205,6 +207,50 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &613720252792552529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173646943330709702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff26ea4cab6b4347a1b227e6eec87c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MagicMushroomPowerup
+  type: 1
+  spawned: 0
+  spriteRenderer: {fileID: 1666019734442603912}
+  magicMushroomAudio: {fileID: 4106510271574948230}
+--- !u!114 &6435684531300164956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173646943330709702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98ffacec1ea9a947991a41cd79b13d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleGameEventListener
+  Event: {fileID: 11400000, guid: 72297d1e3fe8d3b4fae5ea8392a6c411, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 613720252792552529}
+        m_TargetAssemblyTypeName: MagicMushroomPowerup, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8569210623786771635
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +460,8 @@ GameObject:
   - component: {fileID: 4479881009902346937}
   - component: {fileID: 8463796220892745153}
   - component: {fileID: 6316911782715628687}
+  - component: {fileID: 7832339350151127138}
+  - component: {fileID: 6674312617340509802}
   m_Layer: 6
   m_Name: Question-Box
   m_TagString: Untagged
@@ -611,6 +659,48 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7832339350151127138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8818655990988780248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 091423422eb964600bf7bea0ccc67519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionBoxPowerupController
+  powerupAnimator: {fileID: 3256000268679561056}
+  powerup: {fileID: 613720252792552529}
+--- !u!114 &6674312617340509802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8818655990988780248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98ffacec1ea9a947991a41cd79b13d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleGameEventListener
+  Event: {fileID: 11400000, guid: 72297d1e3fe8d3b4fae5ea8392a6c411, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7832339350151127138}
+        m_TargetAssemblyTypeName: QuestionBoxPowerupController, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8952449861578975581
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,7 +833,7 @@ MonoBehaviour:
   useInt:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 613720252792552529}
         m_TargetAssemblyTypeName: MagicMushroomPowerup, Assembly-CSharp
         m_MethodName: SpawnPowerup
         m_Mode: 1

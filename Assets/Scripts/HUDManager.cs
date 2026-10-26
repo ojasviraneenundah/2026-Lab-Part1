@@ -41,10 +41,10 @@ public class HUDManager : MonoBehaviour
     {
         // other instructions
         // subscribe to events
-        GameManager.instance.gameStart.AddListener(GameStart);
-        GameManager.instance.gameOver.AddListener(GameOver);
+        GameManager.instance.gameStart.AddListener(GameStart); // who is raising this????
+        // GameManager.instance.gameOver.AddListener(GameOver);
         // GameManager.instance.gameRestart.AddListener(GameStart); // idk why your restart uses start but okay, we work with this i guess
-        GameManager.instance.scoreChange.AddListener(SetScore);
+        // GameManager.instance.scoreChange.AddListener(SetScore); 
 
     }
 
@@ -58,14 +58,15 @@ public class HUDManager : MonoBehaviour
         restartButton.localPosition = restartButtonPosition[0];
     }
 
-    public void SetScore(int score)
+    public void SetScore()
     {
-        scoreText.GetComponent<TextMeshProUGUI>().text = "Score: " + score.ToString();
+        scoreText.GetComponent<TextMeshProUGUI>().text = "Score: " + gameScore.Value.ToString();
     }
 
 
     public void GameOver()
     {
+        Debug.Log("HUDManager.Gameover() called");
         gameOverPanel.SetActive(true);
         pauseButton.SetActive(false);
         scoreText.transform.localPosition = scoreTextPosition[1];

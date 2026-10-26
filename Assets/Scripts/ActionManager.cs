@@ -52,7 +52,7 @@ public class ActionManager : MonoBehaviour
     // called twice, when pressed and unpressed
     public void OnMoveAction(InputAction.CallbackContext context)
     {
-        // Debug.Log("OnMoveAction callback invoked");
+        Debug.Log("OnMoveAction callback invoked");
         if (context.started)
         {
             Debug.Log("move started");

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Events;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -17,9 +18,11 @@ public class EnemyMovement : MonoBehaviour
     // for restart
     public Vector3 startPosition = new Vector3(0.0f, 0.00f, 0.0f);
 
-    // for delegates and events
-    public delegate void GoombaStomped();
-    public event GoombaStomped onGoombaStomped;
+    // for delegates and events, took out and replaced with increaseScore unity event for lab 5
+    // public delegate void GoombaStomped();
+    // public event GoombaStomped onGoombaStomped;
+
+    public UnityEvent<int> increaseScore;
 
     public Animator goombaAnimator;
     public AudioSource goombaAudioSource;
@@ -65,28 +68,28 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    void OnEnable()
-{
-    if (GameManager.instance != null)
-        GameManager.instance.RegisterEnemy(this);
-}
+// remove the delegates portion completely, for lab 5
+//     void OnEnable()
+// {
+//     if (GameManager.instance != null)
+//         GameManager.instance.RegisterEnemy(this);
+// }
 
-void OnDisable()
-{
-    if (GameManager.instance != null)
-        GameManager.instance.UnregisterEnemy(this);
-}
+// void OnDisable()
+// {
+//     if (GameManager.instance != null)
+//         GameManager.instance.UnregisterEnemy(this);
+// }
 
 
     public void Stomp()
     {
-        Debug.Log("Goomba Stomped");
-        onGoombaStomped?.Invoke();
+        // onGoombaStomped?.Invoke();
+        increaseScore.Invoke(1);
 
         goombaAnimator.SetTrigger("stomped");
         goombaAudioSource.PlayOneShot(goombaAudioSource.clip);
         StartCoroutine(DisableAfterAnimation());
-        
     }
 
     IEnumerator DisableAfterAnimation()

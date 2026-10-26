@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -2076894448256866854}
   - component: {fileID: 1116687779982957909}
   - component: {fileID: -1699414169997959156}
+  - component: {fileID: -6155582802712011657}
   m_Layer: 0
   m_Name: brickCoin_wk5
   m_TagString: Untagged
@@ -134,7 +135,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d885ffc842af744d89f7d595ffcc176a, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -269,3 +270,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &-6155582802712011657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3680173396794952278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d893528cad2e3429aafcaf3f07c8b2a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Coin_spawn
+  coinAnimator: {fileID: 1116687779982957909}
+  coinAudio: {fileID: -2076894448256866854}

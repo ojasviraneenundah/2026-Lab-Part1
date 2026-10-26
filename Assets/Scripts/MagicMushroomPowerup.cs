@@ -16,7 +16,7 @@ public class MagicMushroomPowerup : BasePowerup
     {
         base.Start(); // call base class Start()
         this.type = PowerupType.MagicMushroom;
-        GameManager.instance.gameRestart.AddListener(GameRestart);
+        // GameManager.instance.gameRestart.AddListener(GameRestart);
         originalPosition = transform.localPosition;
 
         spriteRenderer.enabled = false;
@@ -36,7 +36,8 @@ public class MagicMushroomPowerup : BasePowerup
 
             // then destroy powerup (optional)
             // DestroyPowerup();
-            gameObject.SetActive(false);
+            spriteRenderer.enabled = false;
+            spawned = false; // make it invisible and no effect instead of disabling it
             Debug.Log("MUSHROOM POWERUP OBTAINED!");
 
         }
@@ -71,10 +72,10 @@ public class MagicMushroomPowerup : BasePowerup
 
     void Update()
 {
-    if (spawned)
-    {
-        Debug.Log("Mushroom position: " + transform.position);
-    }
+    // if (spawned)
+    // {
+    //     Debug.Log("Mushroom position: " + transform.position);
+    // }
 }
 
 
@@ -98,8 +99,8 @@ public class MagicMushroomPowerup : BasePowerup
 
     public void GameRestart()
     {
-        this.gameObject.SetActive(true);
-
+        Debug.Log("Mushroom reset called!");
+        // gameObject.SetActive(true);
         spriteRenderer.enabled = false;
         spawned = false;
         rigidBody.bodyType = RigidbodyType2D.Kinematic;
@@ -108,6 +109,5 @@ public class MagicMushroomPowerup : BasePowerup
         rigidBody.linearVelocity = Vector2.zero;
         rigidBody.angularVelocity = 0f;
         transform.localPosition = originalPosition;
-        Debug.Log("Mushroom reset called!");
     }
 }

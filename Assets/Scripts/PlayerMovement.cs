@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro; // for text mesh pro UGI
-
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
@@ -31,6 +31,10 @@ public class PlayerMovement : MonoBehaviour
     float upSpeed;
     float maxSpeed;
     float speed;
+    public UnityEvent gameOver;
+    public Event damagePlayer;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -225,7 +229,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Collided with goomba!");
 
             // play death animation
-            marioAnimator.Play("mario-die");
+            marioAnimator.Play("mario-die"); // animation plays gameover at the end
             marioDeathAudio.PlayOneShot(marioDeathAudio.clip);
             alive = false;
             }
@@ -238,7 +242,8 @@ public class PlayerMovement : MonoBehaviour
         // stop time
         Time.timeScale = 0.0f;
         // set gameover scene
-        gameManager.GameOver();
+        // gameManager.GameOver(); // lab5
+        gameOver.Invoke();
     }
 
     // when restart button is clicked
@@ -269,9 +274,9 @@ public class PlayerMovement : MonoBehaviour
     public Transform gameCamera;
 
     // for question boxes
-    public QuestionBox[] questionBoxes;
-    public Coin_spawn[] coin_Spawns;
-    public Bouncebox[] bricks;
+    // public QuestionBox[] questionBoxes;
+    // public Coin_spawn[] coin_Spawns;
+    // public Bouncebox[] bricks;
 
     // need to fix mario and goomba physics after restart button pressed
     public void GameRestart()

@@ -1,8 +1,10 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class QuestionBox : MonoBehaviour
 {
+    public UnityEvent<int> increaseScore;
     private Rigidbody2D rb;
     private Vector2 startPosition;
     private bool bouncing = false;
@@ -146,6 +148,7 @@ public class QuestionBox : MonoBehaviour
 
         // Reset coin only if this box has one
         coin.transform.position = coinStartPosition;
+        increaseScore.Invoke(1);
 
     }
 

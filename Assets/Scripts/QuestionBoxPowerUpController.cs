@@ -11,7 +11,7 @@ public class QuestionBoxPowerupController : MonoBehaviour, IPowerupController
     void Start()
     {
         originalPosition = transform.localPosition;
-        GameManager.instance.gameRestart.AddListener(GameRestart);
+        // GameManager.instance.gameRestart.AddListener(GameRestart);
     }
 
     // Update is called once per frame
@@ -47,6 +47,8 @@ public class QuestionBoxPowerupController : MonoBehaviour, IPowerupController
     public void GameRestart()
 {
     Debug.Log("Question Box reset called!");
+
+    
 
     // reset question box animation
     Animator boxAnimator = GetComponent<Animator>();

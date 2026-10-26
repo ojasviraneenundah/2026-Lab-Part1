@@ -112,8 +112,8 @@ TextureImporter:
       name: "\u2014Pngtree\u2014game button for with play_5981889_0"
       rect:
         serializedVersion: 2
-        x: 429
-        y: 2052
+        x: 443
+        y: 2060
         width: 1920
         height: 542
       alignment: 0
@@ -196,6 +196,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: play
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 2117
+        width: 400
+        height: 400
+      alignment: 9
+      pivot: {x: 0.50508344, y: 0.49491578}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bda51d97acb604d40a3d6d928bcf3783
+      internalID: -1449923195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -210,6 +232,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      play: -1449923195
       replay button: 4876468602225377982
       "\u2014Pngtree\u2014game button for with play_5981889_0": -889831066667668357
       "\u2014Pngtree\u2014game button for with play_5981889_1": 8275344219969204780

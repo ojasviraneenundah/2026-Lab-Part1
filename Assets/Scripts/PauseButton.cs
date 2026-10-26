@@ -13,11 +13,11 @@ public class PauseButton : MonoBehaviour
     // {
         
     // }
-    public GameObject pausePanel;
+public GameObject pausePanel;
 
-    public GameObject pauseButton;
+public GameObject pauseButton;
     
-    public void PauseGame()
+public void PauseGame()
 {
     pausePanel.SetActive(true);
     pauseButton.SetActive(false);

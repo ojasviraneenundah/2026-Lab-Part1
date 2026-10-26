@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.Events;
 
 public class Bouncebox : MonoBehaviour
 {
@@ -10,9 +11,10 @@ public class Bouncebox : MonoBehaviour
     private bool bouncing = false;
     private bool coin = true;
 
-    public AudioSource bounceAudio;
+    // public AudioSource bounceAudio;
 
     GameManager gameManager;
+    public UnityEvent<int> increaseScore;
 
     void Start()
     {
@@ -35,7 +37,8 @@ public class Bouncebox : MonoBehaviour
                 if (item != null && coin){
                     Instantiate(item, transform. position, Quaternion.identity);
                     coin = false;
-                    gameManager.IncreaseScore(1);                
+                    // gameManager.IncreaseScore(1);     // lets use SO in lab 5    
+                    increaseScore.Invoke(1);     
                 }
                 StartCoroutine(Bounce());
                 break;

@@ -23,14 +23,16 @@ public class GameManager : Singleton<GameManager>
     
     // events
     public UnityEvent gameStart;
-    public UnityEvent gameRestart;
-    public UnityEvent<int> scoreChange;
-    public UnityEvent gameOver;
+    // public UnityEvent gameRestart;  
+    // public UnityEvent<int> scoreChange;
+
+    // public UnityEvent gameOver;
 
     // initialise enemy movement to later subscribe to the event/delegate
-    public EnemyMovement[] enemy;
+    // public EnemyMovement[] enemy;
 
     private int score = 0;
+    public UnityEvent setScore;
 
     void Start()
     {
@@ -49,17 +51,17 @@ public class GameManager : Singleton<GameManager>
         // }
         
     }
+// removed the delegate done and replacing with lab 5 SO, will hook up listener in inspector
+    // public void RegisterEnemy(EnemyMovement e)
+    // {
+    //     e.onGoombaStomped -= theActualGoombaStomped; // avoid double-subscribing
+    //     e.onGoombaStomped += theActualGoombaStomped;
+    // }
 
-    public void RegisterEnemy(EnemyMovement e)
-{
-    e.onGoombaStomped -= theActualGoombaStomped; // avoid double-subscribing
-    e.onGoombaStomped += theActualGoombaStomped;
-}
-
-public void UnregisterEnemy(EnemyMovement e)
-{
-    e.onGoombaStomped -= theActualGoombaStomped;
-}
+    // public void UnregisterEnemy(EnemyMovement e)
+    // {
+    //     e.onGoombaStomped -= theActualGoombaStomped;
+    // }
 
     public void SceneSetup(Scene current, Scene next)
     {
@@ -86,8 +88,10 @@ public void UnregisterEnemy(EnemyMovement e)
         Time.timeScale = 1.0f;
     }
 
+    // will call this function in inspector when listening for OnIncreaseScore
     public void IncreaseScore(int increment)
     {
+        Debug.Log("IncreasedScore() ran from GM with following increment: "+increment.ToString());
         // score += increment;
         // SetScore(score);
 
@@ -104,21 +108,23 @@ public void UnregisterEnemy(EnemyMovement e)
         // scoreChange.Invoke(score);
 
         // invoke score change event with current score to update HUD
-        scoreChange.Invoke(gameScore.Value);
+        // scoreChange.Invoke(gameScore.Value);
+        setScore.Invoke();
     }
 
 
     public void GameOver()
     {
+        Debug.Log("GameManager.GameOver() called");
         Time.timeScale = 0.0f;
-        gameOver.Invoke();
+        // gameOver.Invoke(); //lab5
     }
 
-    // the callback function 
-    void theActualGoombaStomped()
-    {
-        Debug.Log("Goomba stomped callback, score now: " + gameScore.Value);
-        IncreaseScore(1);
-    }
+    // the callback function, took out this function, and am going to use the increaseScore function directly 
+    // void theActualGoombaStomped()
+    // {
+    //     Debug.Log("Goomba stomped callback, score now: " + gameScore.Value);
+    //     IncreaseScore(1);
+    // }
 
 } 
